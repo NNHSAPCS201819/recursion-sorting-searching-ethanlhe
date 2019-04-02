@@ -13,11 +13,36 @@ public class ListMethods
         }
         else        
         {
-            
-            makeList(n-1);
-        
+            tempList = makeList(n-1);
+            tempList.add(n);
+            return tempList;
         }
-        return tempList;
+        //return tempList;
     }
 
+    public static ArrayList<Integer> deepClone(ArrayList<Integer> tList)
+    {
+        ArrayList<Integer> list = new ArrayList<Integer>(); 
+        for (Integer i : tList)
+        {
+            list.add(new Integer(i));
+        }
+        return list;
+    }
+
+    public static ArrayList<Integer> reverseList(ArrayList<Integer> tList)
+    {
+        ArrayList<Integer> list = ListMethods.deepClone(tList); 
+        if (list.isEmpty())
+        {
+            return list;
+        }
+        else
+        {
+            list.remove(0);
+            list = reverseList(tList);
+            list.add(tList.get(0));
+            return list;
+        }
+    }
 }
