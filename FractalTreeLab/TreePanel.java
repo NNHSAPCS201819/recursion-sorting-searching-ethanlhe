@@ -9,8 +9,7 @@ public class TreePanel extends JPanel
 
     private final double SQ = Math.sqrt(3.0) / 6;
 
-    private final int TOPX = 810, TOPY = 700;
-    private final int LEFTX = 810, LEFTY = 600;
+    private final int TOPX = 810, TOPY = 470;
     private final double SCALING_FACTOR = .8;
     private final int BRANCH_ANGLE = 30;
     private int current; //current order
@@ -38,17 +37,27 @@ public class TreePanel extends JPanel
 
         if (length==0)
         {
+            Graphics2D g2d = (Graphics2D) page;
+            g2d.fillOval(x1-4, y1-4, 9, 9);
+           
             return;
         }
         else
         {
 
-            int x2 = x1 + (int) (Math.cos(Math.toRadians(angle)) * length * 10.0);
-            int y2 = y1 + (int) (Math.sin(Math.toRadians(angle)) * length * 10.0);
+            int x2 = x1 + (int)(Math.cos(Math.toRadians(angle)) * length * 13.0);
+            int y2 = y1 + (int)(Math.sin(Math.toRadians(angle)) * length * 13.0);
 
             minBranch = Math.sqrt((y2 - y1) * (y2 - y1) + (x2 - x1) * (x2 - x1));
-            drawFractal (x2, y2, angle + 30, length-1, page);
-            drawFractal (x2, y2, angle - 30, length-1, page);
+
+            Graphics2D g2d = (Graphics2D) page;
+            g2d.setStroke(new BasicStroke(3));
+            g2d.drawLine(x1, y1, x2, y2);
+
+
+            
+            drawFractal (x2, y2, angle + 20, length-1, page);
+            drawFractal (x2, y2, angle - 20, length-1, page);
 
         }
     }
@@ -62,22 +71,7 @@ public class TreePanel extends JPanel
 
         page.setColor (Color.white);
 
-        drawFractal (TOPX, TOPY, 30, 10, page);
-    }
-
-    //-----------------------------------------------------------------
-    //  Sets the fractal order to the value specified.
-    //-----------------------------------------------------------------
-    public void setOrder (int order)
-    {
-        current = order;
-    }
-
-    //-----------------------------------------------------------------
-    //  Returns the current order.
-    //-----------------------------------------------------------------
-    public int getOrder ()
-    {
-        return current;
+        drawFractal (TOPX, TOPY, 0, 10, page);
+        drawFractal (TOPX, TOPY, 180, 10, page);
     }
 }

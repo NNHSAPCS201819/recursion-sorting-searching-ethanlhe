@@ -1,5 +1,5 @@
 //********************************************************************
-//  TreeSnowflakeViewer.java       Author: Lewis/Loftus/Cocking
+//  TreeViewer.java       Author: Lewis/Loftus/Cocking
 //
 //  Demonstrates the use of recursion.
 //  @gcschmit (19 July 2014): converted from an applet to an application
@@ -9,7 +9,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class TreeSnowflakeViewer
+public class TreeViewer
 {
     private final int WIDTH = 1620;
     private final int HEIGHT = 980;
@@ -27,10 +27,10 @@ public class TreeSnowflakeViewer
     //-----------------------------------------------------------------
     public static void main(String[] args)
     {
-        TreeSnowflakeViewer viewer = new TreeSnowflakeViewer();
+        TreeViewer viewer = new TreeViewer();
     }
     
-    public TreeSnowflakeViewer()
+    public TreeViewer()
     {
         tools = new JPanel ();
         tools.setLayout (new BoxLayout(tools, BoxLayout.X_AXIS));
@@ -49,7 +49,7 @@ public class TreeSnowflakeViewer
         panel.add (drawing);
 
         frame = new JFrame();
-        frame.setTitle("Knoch Snowflake");
+        frame.setTitle("Knoch ");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(WIDTH, HEIGHT);
         frame.add(panel);
